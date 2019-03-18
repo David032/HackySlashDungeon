@@ -35,7 +35,8 @@ public class OVRGrabbable : MonoBehaviour
 
     protected bool m_grabbedKinematic = false;
     protected Collider m_grabbedCollider = null;
-    protected OVRGrabber m_grabbedBy = null;
+    [HideInInspector]
+    public OVRGrabber m_grabbedBy = null;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -117,12 +118,19 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        if (this.GetComponent<OVRPickup>() != null)
+        {
+            OVRPickup pickup = this.GetComponent<OVRPickup>();
+            pickup.has_picked_up = true;
+            pickup.which_hand = hand.name;
+            m_grabbedBy.ForceRelease(this);
+        }
     }
 
-	/// <summary>
-	/// Notifies the object that it has been released.
-	/// </summary>
-	virtual public void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
+    /// <summary>
+    /// Notifies the object that it has been released.
+    /// </summary>
+    virtual public void GrabEnd(Vector3 linearVelocity, Vector3 angularVelocity)
     {
         Rigidbody rb = gameObject.GetComponent<Rigidbody>();
         rb.isKinematic = m_grabbedKinematic;

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Oculus;
 
+//0:Starting corridor
+//1:NorthCorridor
+//2:4WayHub
+//3:WesternCorridor
+//4:EasternCorridor
+//5:EasternCorridorFar
+//6:LibraryLower
+//7:LibraryUpper
+
 public class Transportation : MonoBehaviour {
 
     public GameObject[] Points;
@@ -17,6 +26,9 @@ public class Transportation : MonoBehaviour {
     private void Update()
     {
         moveController();
+
+        print(Input.GetAxis("RemoteX"));
+        print(Input.GetAxis("RemoteY"));
     }
 
     void moveController()
@@ -27,9 +39,17 @@ public class Transportation : MonoBehaviour {
             {
                 move(1);
             }
-            if (currentPoint == 1)
+            else if (currentPoint == 1)
             {
-                print("Not yet");
+                move(2);
+            }
+            else if (currentPoint == 6)
+            {
+                move(5);
+            }
+            else if (currentPoint == 7)
+            {
+                move(6);
             }
         }
 
@@ -39,9 +59,13 @@ public class Transportation : MonoBehaviour {
             {
                 move(3);
             }
-            if (currentPoint == 4)
+            else if (currentPoint == 4)
             {
                 move(2);
+            }
+            else if (currentPoint == 5)
+            {
+                move(4);
             }
         }
 
@@ -51,6 +75,18 @@ public class Transportation : MonoBehaviour {
             {
                 move(0);
             }
+            else if (currentPoint == 2)
+            {
+                move(1);
+            }
+            else if (currentPoint == 5)
+            {
+                move(6);
+            }
+            else if (currentPoint == 6)
+            {
+                move(7);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.D))
@@ -59,9 +95,13 @@ public class Transportation : MonoBehaviour {
             {
                 move(4);
             }
-            if (currentPoint == 3)
+            else if (currentPoint == 3)
             {
                 move(2);
+            }
+            else if (currentPoint == 4)
+            {
+                move(5);
             }
         }
     }

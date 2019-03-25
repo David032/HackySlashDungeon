@@ -17,6 +17,8 @@ public class Transportation : MonoBehaviour {
     public GameObject[] Points;
 
     public int currentPoint = 0;
+    public bool canMove = true;
+    public float time = 0;
 
     private void Start()
     {        
@@ -25,83 +27,115 @@ public class Transportation : MonoBehaviour {
 
     private void Update()
     {
-        moveController();
+        time += Time.deltaTime;
+        if (time > 0.5f)
+        {
+            canMove = true;
+        }
 
-        print(Input.GetAxis("RemoteX"));
-        print(Input.GetAxis("RemoteY"));
+        OVRInput.Update(); // Call before checking the input
+        moveController();
     }
 
     void moveController()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        OVRInput.Update();
+
+        if (OVRInput.Get(OVRInput.RawButton.DpadUp) && canMove)
         {
+            print("Attempting to move forward!");
             if (currentPoint == 0)
             {
                 move(1);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 1)
+            else if (currentPoint == 1 && canMove)
             {
                 move(2);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 6)
+            else if (currentPoint == 6 && canMove)
             {
                 move(5);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 7)
+            else if (currentPoint == 7 && canMove)
             {
                 move(6);
+                canMove = false;
+                time = 0;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (OVRInput.Get(OVRInput.Button.DpadLeft) && canMove)
         {
-            if (currentPoint == 2)
+            if (currentPoint == 2 && canMove)
             {
                 move(3);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 4)
+            else if (currentPoint == 4 && canMove)
             {
                 move(2);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 5)
+            else if (currentPoint == 5 && canMove)
             {
                 move(4);
+                canMove = false;
+                time = 0;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (OVRInput.Get(OVRInput.Button.DpadDown) && canMove)
         {
-            if (currentPoint == 1)
+            if (currentPoint == 1 && canMove)
             {
                 move(0);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 2)
+            else if (currentPoint == 2 && canMove)
             {
                 move(1);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 5)
+            else if (currentPoint == 5 && canMove)
             {
                 move(6);
+                canMove = false;
+                time = 0;
             }
-            else if (currentPoint == 6)
+            else if (currentPoint == 6 && canMove)
             {
                 move(7);
+                canMove = false;
+                time = 0;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (OVRInput.Get(OVRInput.Button.DpadRight) && canMove)
         {
-            if (currentPoint == 2)
+            if (currentPoint == 2 && canMove)
             {
                 move(4);
+                canMove = false;
             }
-            else if (currentPoint == 3)
+            else if (currentPoint == 3 && canMove)
             {
                 move(2);
+                canMove = false;
             }
-            else if (currentPoint == 4)
+            else if (currentPoint == 4 && canMove)
             {
                 move(5);
+                canMove = false;
             }
         }
     }

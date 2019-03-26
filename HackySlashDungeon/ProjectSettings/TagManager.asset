@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Weapon
+  - Shield
+  - Point
   layers:
   - Default
   - TransparentFX

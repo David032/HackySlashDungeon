@@ -16,7 +16,8 @@ public class Transportation : MonoBehaviour {
     public enum Motion
     {
         RemotePointToPoint,
-        Linear
+        Linear,
+        Forward
     }
 
     public GameObject[] Points;
@@ -26,9 +27,16 @@ public class Transportation : MonoBehaviour {
     public bool canMove = true;
     public float time = 0;
 
-    private void Start()
-    {        
-        transform.position = Points[0].transform.position;
+    public GameObject targetPointObj;
+    public GameObject currentPointObj;
+    public bool isColliding;
+
+    GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = currentPointObj.transform.position;
 
         if (MovementType == Motion.Linear)
         {
@@ -39,17 +47,18 @@ public class Transportation : MonoBehaviour {
         }
     }
 
+
     private void Update()
     {
+        OVRInput.Update();
         time += Time.deltaTime;
-        if (time > 0.5f)
+        if (time > 1.5f)
         {
             canMove = true;
         }
 
         if (MovementType == Motion.RemotePointToPoint)
         {
-            OVRInput.Update();
             moveController();
         }
         else if (MovementType == Motion.Linear)
@@ -57,9 +66,47 @@ public class Transportation : MonoBehaviour {
             GetComponent<OVRPlayerController>().EnableLinearMovement = true;
             remoteMovement();
         }
+        else if (MovementType == Motion.Forward)
+        {
+
+            if (isColliding && canMove)
+            {
+                print("can move");
+                if (OVRInput.Get(OVRInput.Button.DpadUp) || Input.GetKeyDown(KeyCode.W))
+                {
+                    print("Making a move");
+                    player.transform.position = targetPointObj.transform.position;
+                    currentPointObj = targetPointObj;
+                    targetPointObj = null;
+                    canMove = false;
+                    time = 0;
+                }
+            }
+        }
 
         crouch();
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Point")
+        {
+            targetPointObj = other.gameObject;
+            isColliding = true;
+            print("Colliding with " + targetPointObj.name.ToString());
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Point")
+        {
+            print("Not colliding with " + targetPointObj.name.ToString());
+            targetPointObj = null;
+            isColliding = false;
+        }   
+    }
+
+
 
     void crouch()
     {

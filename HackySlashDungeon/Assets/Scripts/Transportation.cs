@@ -94,6 +94,7 @@ public class Transportation : MonoBehaviour {
             targetPointObj = other.gameObject;
             isColliding = true;
             print("Colliding with " + targetPointObj.name.ToString());
+            targetPointObj.GetComponent<MeshRenderer>().enabled = true;
         }
     }
     void OnTriggerExit(Collider other)
@@ -101,6 +102,7 @@ public class Transportation : MonoBehaviour {
         if (other.gameObject.tag == "Point")
         {
             print("Not colliding with " + targetPointObj.name.ToString());
+            targetPointObj.GetComponent<MeshRenderer>().enabled = false;
             targetPointObj = null;
             isColliding = false;
         }   

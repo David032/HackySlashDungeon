@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-I:/HackySlashDungeon/HackySlashDungeon/Builds/Alpha1/HackySlashDungeon.exe
+I:/HackySlashDungeon/HackySlashDungeon/Builds/Alpha2/HackySlashDungeon.exe
 SceneListBegin?
 Assets/Scenes/Main.unity
 SceneListEnd?
@@ -172,6 +172,7 @@ e7489514a648ce787e3e741d97e0f561 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 7e727e029381ef22f11cd6a9fe412567 Oculus.VR.dll:.OVRTrackedRemote
 26f8343e53f111c5ec1fcba8041ae699 Assembly-CSharp.dll:OculusSampleFramework.GrabbableCrosshair
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Car.CarUserControl
+791e36b0b37f72cf617b3d41fd6bae06 Assembly-CSharp.dll:.CamChange
 06e71299303fe72a0023b8f4716f18c3 Assembly-CSharp.dll:Oculus.Platform.Samples.VrBoardGame.GameController
 58b10cb949c3fcc19a7802f08afc55e5 Assembly-CSharp.dll:.SlimeGroundCheck
 7510b7ebd87143c42b5aadb3813c2289 Assembly-CSharp.dll:Oculus.Platform.Samples.SimplePlatformSample.DataEntry
@@ -211,6 +212,7 @@ cc1766c37cdc31e82a074bdeb7da14f5 Assembly-CSharp.dll:.TeleportTargetHandlerPhysi
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.OvrAvatarTouchController
 4bd2ce0ce7ea9374f663549b0ba0aa06 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.ThirdPersonCharacter
 96a67b768694580a83d9fdd3c5161f6a Assembly-CSharp.dll:.CameraSwitch
+d633553b7c2ecb097bf19e5eaf865424 Assembly-CSharp.dll:.Trap
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Oculus.Platform.Samples.VrHoops.DetectBasket
 c68d66256d8c6474713166d1a1583d64 Assembly-CSharp.dll:.OVRPickup
 ff283be4d35bba5c753f57be9c05b539 Assembly-CSharp.dll:.ONSPReflectionZone
@@ -366,6 +368,7 @@ d75dc834c5dec688db75a55a1724c90f UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 e1ea12ca952c81d81a9a21fdf34446ed UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 98d69a140ec0084cde3b6a5e09aea295 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
+3ebb72713a0965114d3f4be5fb20870a Assembly-CSharp.dll:.Spawner
 f2143d8859d27c6fb35088337df79fd9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Aeroplane.AeroplaneControlSurfaceAnimator
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 06d51b8055e70ca39cec8ba3a3a6b0e1 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Car.CarAudio
@@ -392,6 +395,7 @@ bf9092984e391e854436c93547ae117f Oculus.VR.dll:.OVRLint
 e7264fa9ee3a8a07bb0d50abc40c07a0 Oculus.VR.dll:.OVRGrabber
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Water.GerstnerDisplace
 63b1d9ebe2d595f39b6b7350000aa0e6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.Explosive
+f136ffa2a58da76f1f597c473535c8d0 Assembly-CSharp.dll:.CamMenu
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.OvrAvatarHand
 a9dd27e9177b8e35351413c4a2f9486b Assembly-CSharp.dll:Oculus.Platform.VoipAudioSourceHiLevel
 e04611b8715e6833d2bd7010fc6be10b Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
@@ -420,3 +424,10 @@ eabf9eee1a15de4015d5e0511216144d Assembly-CSharp.dll:.EnemyHealth
 90c2ec7174376e741f9a1aca7a405252 Assembly-UnityScript.dll:.ThirdPersonCamera
 695c9335429d4798b6f74ca73c042ff4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
 89a823f7a96ac1574ae482ae47d6caac Assembly-CSharp.dll:.EnemyPatrol
+cf0261f07984b14bcbc3b3885b9ac580 Assembly-CSharp.dll:.BossDoor
+507c32b4c8e37c05d2b29033ad687a39 Assembly-CSharp.dll:.Key
+98921fae04e857f9cd8dba58d7fcf11e Assembly-CSharp.dll:.KeyCounter
+d9fa73a6521f7b7ba1a21a13ea00bff8 Assembly-CSharp.dll:.EnemyController
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.Rock
+80e14dd8d22767761d94268e68c1c768 Assembly-CSharp.dll:.RockTrap
+1dbbf34072da5cd6dab7d5445cab5b59 Assembly-CSharp.dll:.KeysUI

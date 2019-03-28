@@ -52,7 +52,7 @@ public class Transportation : MonoBehaviour {
     {
         OVRInput.Update();
         time += Time.deltaTime;
-        if (time > 1.5f)
+        if (time > 0.5f)
         {
             canMove = true;
         }

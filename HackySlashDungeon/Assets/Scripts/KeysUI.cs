@@ -8,7 +8,8 @@ public class KeysUI : MonoBehaviour {
 
 	
 	// Update is called once per frame
-	void Update () {
-        keysText.text = "Current Keys:" + GetComponentInParent<KeyCounter>().keysCollected.ToString();
+	void Update ()
+    {
+        keysText.text = "Current Keys:" + GameObject.FindGameObjectWithTag("Player").GetComponent<KeyCounter>().keysCollected.ToString();
 	}
 }

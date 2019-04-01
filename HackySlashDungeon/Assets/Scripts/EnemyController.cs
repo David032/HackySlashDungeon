@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour {
     bool hitPlayer = true;
     Transform PlayerTransform;
     Transform EntityTransform;
+    bool isBeingStabbed;
 
     void Start()
     {
@@ -79,7 +80,7 @@ public class EnemyController : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Weapon")
+        if (collision.gameObject.tag == "Weapon" && !isBeingStabbed)
         {
             if (health == 0)
             {
@@ -90,8 +91,29 @@ public class EnemyController : MonoBehaviour {
             else
             {
                 health -= 1;
+                isBeingStabbed = true;
             }
 
+        }
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<playerHealth>().Health -= 1;
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<playerHealth>().Health -= 1;
+        }
+    }
+
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Weapon")
+        {
+            isBeingStabbed = false;
         }
     }
 
@@ -137,15 +159,15 @@ public class EnemyController : MonoBehaviour {
 
         EntityTransform.LookAt(PlayerTransform);
         EntityTransform.Rotate(EntityTransform.rotation.x, (EntityTransform.rotation.y - 90), 0);
-        if (stamina > 0.2 && !hitPlayer)
+        if (stamina > 0.5 && !hitPlayer)
         {
-            EntityTransform.position = Vector3.MoveTowards(EntityTransform.position, PlayerTransform.position, combatStep);
+            EntityTransform.position = Vector3.MoveTowards(EntityTransform.position, PlayerTransform.position, (combatStep * 5));
             //attackSound.Play();
             stamina = 0;
         }
-        else if (stamina > 0.2 && hitPlayer)
+        else if (stamina > 0.5 && hitPlayer)
         {
-            EntityTransform.position = Vector3.MoveTowards(EntityTransform.position, PlayerTransform.position, (combatStep * -25));
+            EntityTransform.position = Vector3.MoveTowards(EntityTransform.position, PlayerTransform.position, (combatStep * -10));
             stamina = 0;
             hitPlayer = false;
         }

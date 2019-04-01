@@ -32,11 +32,14 @@ public class Transportation : MonoBehaviour {
     public bool isColliding;
 
     GameObject player;
+    Vector3 boxSize;
+    
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position = currentPointObj.transform.position;
+        boxSize = GetComponent<BoxCollider>().size;
 
         if (MovementType == Motion.Linear)
         {
@@ -71,10 +74,10 @@ public class Transportation : MonoBehaviour {
 
             if (isColliding && canMove)
             {
-                print("can move");
+                //print("can move");
                 if (OVRInput.Get(OVRInput.Button.DpadUp) || Input.GetKeyDown(KeyCode.W))
                 {
-                    print("Making a move");
+                    //print("Making a move");
                     player.transform.position = targetPointObj.transform.position;
                     currentPointObj = targetPointObj;
                     targetPointObj = null;
@@ -93,19 +96,30 @@ public class Transportation : MonoBehaviour {
         {
             targetPointObj = other.gameObject;
             isColliding = true;
-            print("Colliding with " + targetPointObj.name.ToString());
             targetPointObj.GetComponent<MeshRenderer>().enabled = true;
+            print("Am colliding with " + other.gameObject.name);
         }
+        if (other.gameObject.tag == "Trap")
+        {
+            GetComponent<BoxCollider>().size.Set(0, 0, 0);
+            isColliding = false;
+            print("Am colliding with " + other.gameObject.name);
+        }
+
     }
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Point")
         {
-            print("Not colliding with " + targetPointObj.name.ToString());
+            //print("Not colliding with " + targetPointObj.name.ToString());
             targetPointObj.GetComponent<MeshRenderer>().enabled = false;
             targetPointObj = null;
             isColliding = false;
-        }   
+        }
+        if (other.gameObject.tag == "Trap")
+        {
+            GetComponent<BoxCollider>().size = boxSize;
+        }
     }
 
 
@@ -137,7 +151,7 @@ public class Transportation : MonoBehaviour {
 
         if (OVRInput.Get(OVRInput.RawButton.DpadUp) && canMove)
         {
-            print("Attempting to move forward!");
+            //print("Attempting to move forward!");
             if (currentPoint == 0)
             {
                 move(1);

@@ -7,6 +7,8 @@ TagManager:
   - Weapon
   - Shield
   - Point
+  - Enemy
+  - Trap
   layers:
   - Default
   - TransparentFX

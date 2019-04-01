@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour {
 
     public int health = 2;
     public AudioSource deathSound;
+    public AudioSource attackSound;
     public enum State
     {
         Idle,
@@ -16,6 +17,7 @@ public class EnemyController : MonoBehaviour {
     public GameObject destinationPos;
     public State EnemyState = State.Idle;
     public Material angryMat;
+    public ParticleSystem death;
 
     float speed = 3.0f;
     GameObject Player;
@@ -25,11 +27,18 @@ public class EnemyController : MonoBehaviour {
     float stamina;
     float playerDistance;
     bool to;
+    Material normalMat;
+    bool hitPlayer = true;
+    Transform PlayerTransform;
+    Transform EntityTransform;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Entity = gameObject;
+        normalMat = this.gameObject.GetComponent<MeshRenderer>().material;
+        PlayerTransform = Player.transform;
+        EntityTransform = Entity.transform;
     }
 
     void Update()
@@ -56,10 +65,12 @@ public class EnemyController : MonoBehaviour {
             case State.Idle:
                 break;
             case State.Patrolling:
+                GetComponent<MeshRenderer>().material = normalMat;
                 patrol();
                 break;
             case State.Attacking:
                 GetComponent<MeshRenderer>().material = angryMat;
+                Attack();
                 break;
             default:
                 break;
@@ -73,6 +84,7 @@ public class EnemyController : MonoBehaviour {
             if (health == 0)
             {
                 deathSound.Play();
+                death.Play();
                 this.gameObject.SetActive(false);
             }
             else
@@ -86,18 +98,17 @@ public class EnemyController : MonoBehaviour {
     void patrol()
     {
         elapsedTime += Time.deltaTime;
-
-        float step = speed * Time.deltaTime;
+        float patrolStep = speed * Time.deltaTime;
 
         if (elapsedTime > 5f)
         {
             if (to == true)
             {
-                transform.position = Vector3.MoveTowards(transform.position, destinationPos.transform.position, step);
+                transform.position = Vector3.MoveTowards(transform.position, destinationPos.transform.position, patrolStep);
             }
             if (to == false)
             {
-                transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, step);
+                transform.position = Vector3.MoveTowards(transform.position, startPos.transform.position, patrolStep);
             }
         }
 
@@ -119,7 +130,26 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
+    void Attack()
+    {
+        elapsedTime += Time.deltaTime;
+        float combatStep = speed * Time.deltaTime;
 
+        EntityTransform.LookAt(PlayerTransform);
+        EntityTransform.Rotate(EntityTransform.rotation.x, (EntityTransform.rotation.y - 90), 0);
+        if (stamina > 0.2 && !hitPlayer)
+        {
+            EntityTransform.position = Vector3.MoveTowards(EntityTransform.position, PlayerTransform.position, combatStep);
+            //attackSound.Play();
+            stamina = 0;
+        }
+        else if (stamina > 0.2 && hitPlayer)
+        {
+            EntityTransform.position = Vector3.MoveTowards(EntityTransform.position, PlayerTransform.position, (combatStep * -25));
+            stamina = 0;
+            hitPlayer = false;
+        }
+    }
 
 
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Trap : MonoBehaviour {
 
     public GameObject trap;
+    public KeyCode key;
 
     Button thisButton;
     ParticleSystem trapEffect;
@@ -20,5 +21,13 @@ public class Trap : MonoBehaviour {
     private void TaskOnClick()
     {
         trapEffect.Play();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(key))
+        {
+            trapEffect.Play();
+        }
     }
 }

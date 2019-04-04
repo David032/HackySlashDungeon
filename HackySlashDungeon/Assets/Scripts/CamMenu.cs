@@ -16,6 +16,14 @@ public class CamMenu : MonoBehaviour {
         thisButton.onClick.AddListener(TaskOnClick);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            camMenu.SetActive(!camMenu.activeInHierarchy);
+        }
+    }
+
     private void TaskOnClick()
     {
         camMenu.SetActive(!camMenu.activeInHierarchy);

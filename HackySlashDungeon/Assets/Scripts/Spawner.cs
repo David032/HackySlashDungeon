@@ -16,6 +16,14 @@ public class Spawner : MonoBehaviour {
         thisButton.onClick.AddListener(TaskOnClick);
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            enemy.gameObject.SetActive(true);
+        }
+    }
+
     private void TaskOnClick()
     {
         enemy.gameObject.SetActive(true);

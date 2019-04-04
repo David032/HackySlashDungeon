@@ -24,6 +24,8 @@ public class BossController : MonoBehaviour {
 
     void FixedUpdate()
     {
+
+
         if (health <= 0)
         {
             for (int i = 0; i < finalpoints.Length; i++)

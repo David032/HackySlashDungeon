@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour {
     float speed = 3.0f;
     GameObject Player;
     GameObject Entity;
-    float PlayerDistance;
+    public float PlayerDistance;
     float elapsedTime;
     float stamina;
     float playerDistance;

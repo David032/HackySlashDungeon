@@ -97,13 +97,13 @@ public class Transportation : MonoBehaviour {
             targetPointObj = other.gameObject;
             isColliding = true;
             targetPointObj.GetComponent<MeshRenderer>().enabled = true;
-            print("Am colliding with " + other.gameObject.name);
+            //print("Am colliding with " + other.gameObject.name);
         }
         if (other.gameObject.tag == "Trap")
         {
             GetComponent<BoxCollider>().size.Set(0, 0, 0);
             isColliding = false;
-            print("Am colliding with " + other.gameObject.name);
+            //print("Am colliding with " + other.gameObject.name);
         }
 
     }

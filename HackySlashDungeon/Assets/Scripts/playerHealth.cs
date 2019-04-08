@@ -9,7 +9,7 @@ public class playerHealth : MonoBehaviour {
 
     void LateUpdate()
     {
-        if (Health == 0)
+        if (Health <= 0)
         {
             transform.position = startPosition.transform.position;
             Health = 100;

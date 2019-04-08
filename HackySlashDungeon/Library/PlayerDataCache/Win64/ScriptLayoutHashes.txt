@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-I:/HackySlashDungeon/HackySlashDungeon/Builds/Alpha6/HackySlashDungeon.exe
+I:/HackySlashDungeon/HackySlashDungeon/Builds/Beta1/HackySlashDungeon.exe
 SceneListBegin?
 Assets/Scenes/Main.unity
 SceneListEnd?
@@ -352,6 +352,7 @@ e033f131358cea5a0eabf9561e781deb UnityEngine.TestRunner.dll:UnityEngine.TestTool
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp-firstpass.dll:.AlphaButtonClickMask
 07aaf6429222f41ececaadb6cc5de76c Assembly-CSharp.dll:.PoseEditHelper
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Oculus.Platform.Samples.VrHoops.Camera2DController
+486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MultiDisplayFix
 1a90b221dc803408fbafa883c12bcab4 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioListenerExtension
 70f7dc248db3379548a88e8d4fa049f8 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 28a95668dd28649297d595834fe8417e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
@@ -442,4 +443,5 @@ eabf9eee1a15de4015d5e0511216144d Assembly-CSharp.dll:.EnemyHealth
 90c2ec7174376e741f9a1aca7a405252 Assembly-UnityScript.dll:.ThirdPersonCamera
 695c9335429d4798b6f74ca73c042ff4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
 89a823f7a96ac1574ae482ae47d6caac Assembly-CSharp.dll:.EnemyPatrol
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.MultiDisplayFix
+a1d136a66f510f88fd3542f2469fb1fb Assembly-CSharp.dll:.okButton
+6763e726607ca848f0254e0a09933d43 Assembly-CSharp.dll:.junctionFix
